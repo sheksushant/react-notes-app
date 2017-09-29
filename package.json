@@ -1,0 +1,12 @@
+{
+  "name": "notes_app",
+  "version": "1.0.0",
+  "description": "A simple React Notes App.",
+  "main": "index.js",
+  "author": "Sushant Shekhar",
+  "license": "MIT",
+  "dependencies": {
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1"
+  }
+}
