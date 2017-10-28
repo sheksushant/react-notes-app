@@ -1,61 +1,91 @@
-
-const app = {
-    title : 'React Notes',
-    subtitle: 'Lets Note...',
-    options : []
+const obj = {
+    name: 'sushant',
+    getName() {
+        return this.name;
+    }
 };
 
-const onFormSubmit = (e) => {
-    e.preventDefault();
-
-    const option = e.target.elements.option.value;
-    if(option) {
-        app.options.push(option);
-        e.target.elements.option.value = '';
-        render();
+class NotesApp extends React.Component {
+    render() {
+        const title = 'Note Taking App';
+        const subtitle = "made with reactJS";
+        const options = ['1','2','3'];
+        return (
+            <div>
+            <Header title={title} subtitle={subtitle} />
+            <Action />
+            <Options options = {options} />
+            <AddOption />
+            </div>
+        )
+    }
+}
+class Header extends React.Component {
+    render(){
+        return (
+            <div>
+            <h1>{this.props.title}</h1>
+            <h2>{this.props.subtitle}</h2>
+            </div>
+        )
+    }
+}
+class Action extends React.Component {
+    handlePick() {
+            alert('o');
+    }
+    render() {
+        return (<div>
+            <button onClick={this.handlePick} >What Should I do? </button>
+       </div>
+        )
     }
 }
 
-const wipe = ()=> {
-    app.options = [];
-    render();
+class Options extends React.Component {
+    handleRemoveAll() {
+            alert('ok');
+    }
+    render() {
+        return (<div>
+            <button onClick={this.handleRemoveAll}>Remove All</button>
+            {
+                this.props.options.map((option)=> <Option key={option} optionText = {option} />)
+            }
+        </div>
+        )
+    };
 }
 
-const numbers = [10,20];
+class Option extends React.Component {
+    render() {
+        return (
+            <div>
+            <p>{this.props.optionText}</p>
+            </div>
+        );
+    };
+}
 
-const onMakeDecision = () => {
-    const randomNum = Math.floor(Math.random() * app.options.length);
-    const option = app.options[randomNum];
-    alert(option);
-    render();
-};
+class AddOption extends React.Component {
+    handleAddOption(e) {
+        e.preventDefault();
+        const option = e.target.elements.option.value.trim();
+        if(option){
+        alert(option);}
+    }
+    render() {
+        return (
+            <div>
+                <form onSubmit={this.handleAddOption}> 
+                <input type="text" name="option" />
+                <button >Add Option</button>
+                </form>
+            </div>
+        );
+    }
+}
 
-const appRoot = document.getElementById('app');
-let i = 0;
-const render = () => {
-    const template = (
-        <div>
-        <h1>{app.title}</h1>
-        {app.subtitle && <p>{app.subtitle}</p>}
-        <p>{app.options.length > 0 ? 'Here are your options' : 'No Options'}</p>
-        
-        <button disabled={app.options.length=== 0} onClick= {onMakeDecision}>What Should I do?</button>
-        <button onClick={wipe}>Remove All</button>
+const app = document.getElementById('app');
 
-        <ol>
-        {
-            app.options.map((option) => {
-                return <li key={option}>{option}</li>
-            })
-        }
-        </ol>
-        
-        <form onSubmit = {onFormSubmit}>
-            <input type="text" name= "option"></input>
-            <button>Add Option</button>
-        </form>
-        </div>);
-
-    ReactDOM.render(template,appRoot);
-};
-render();
+ReactDOM.render( <NotesApp />,app);
