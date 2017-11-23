@@ -1,4 +1,4 @@
-class NotesApp extends React.Component {
+class IndecisionApp extends React.Component {
   constructor(props) {
     super(props);
     this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
@@ -20,8 +20,8 @@ class NotesApp extends React.Component {
     alert(option);
   }
   render() {
-    const title = 'React Notes App';
-    const subtitle = 'What to Do Next?';
+    const title = 'Indecision';
+    const subtitle = 'Put your life in the hands of a computer';
 
     return (
       <div>
@@ -39,6 +39,7 @@ class NotesApp extends React.Component {
     );
   }
 }
+
 class Header extends React.Component {
   render() {
     return (
@@ -110,4 +111,4 @@ class AddOption extends React.Component {
   }
 }
 
-ReactDOM.render(<NotesApp />, document.getElementById('app'));
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'));

@@ -8,13 +8,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var NotesApp = function (_React$Component) {
-  _inherits(NotesApp, _React$Component);
+var IndecisionApp = function (_React$Component) {
+  _inherits(IndecisionApp, _React$Component);
 
-  function NotesApp(props) {
-    _classCallCheck(this, NotesApp);
+  function IndecisionApp(props) {
+    _classCallCheck(this, IndecisionApp);
 
-    var _this = _possibleConstructorReturn(this, (NotesApp.__proto__ || Object.getPrototypeOf(NotesApp)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).call(this, props));
 
     _this.handleDeleteOptions = _this.handleDeleteOptions.bind(_this);
     _this.handlePick = _this.handlePick.bind(_this);
@@ -24,7 +24,7 @@ var NotesApp = function (_React$Component) {
     return _this;
   }
 
-  _createClass(NotesApp, [{
+  _createClass(IndecisionApp, [{
     key: 'handleDeleteOptions',
     value: function handleDeleteOptions() {
       this.setState(function () {
@@ -43,8 +43,8 @@ var NotesApp = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var title = 'React Notes App';
-      var subtitle = 'What to Do Next?';
+      var title = 'Indecision';
+      var subtitle = 'Put your life in the hands of a computer';
 
       return React.createElement(
         'div',
@@ -63,7 +63,7 @@ var NotesApp = function (_React$Component) {
     }
   }]);
 
-  return NotesApp;
+  return IndecisionApp;
 }(React.Component);
 
 var Header = function (_React$Component2) {
@@ -224,4 +224,4 @@ var AddOption = function (_React$Component6) {
   return AddOption;
 }(React.Component);
 
-ReactDOM.render(React.createElement(NotesApp, null), document.getElementById('app'));
+ReactDOM.render(React.createElement(IndecisionApp, null), document.getElementById('app'));
