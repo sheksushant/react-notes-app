@@ -39,7 +39,6 @@ class NotesApp extends React.Component {
     );
   }
 }
-
 class Header extends React.Component {
   render() {
     return (
@@ -111,4 +110,4 @@ class AddOption extends React.Component {
   }
 }
 
-ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
+ReactDOM.render(<NotesApp />, document.getElementById('app'));
