@@ -5,17 +5,43 @@ import Header from './Header';
 import Action from './Action';
 
 export default class NotesApp extends React.Component {
-    constructor(props) {
-      super(props);
-      this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
-      this.handlePick = this.handlePick.bind(this);
-      this.handleAddOption = this.handleAddOption.bind(this);
-      this.handleDeleteOption = this.handleDeleteOption.bind(this);
-      this.state = {
+
+  state = {
+    options  :[]
+  };
+
+  handleDeleteOptions = () => {
+    this.setState(() => ({
         options: []
-      };
+    }));
+  }
+
+  handleDeleteOption = (optionToRemove) => {
+    this.setState((prevState)=> ({
+        options : prevState.options.filter((option)=>{
+          return (optionToRemove !== option);
+        })
+    }))
+  }
+
+  handlePick=()=> {
+    const randomNum = Math.floor(Math.random() * this.state.options.length);
+    const option = this.state.options[randomNum];
+    alert(option);
+  }
+  handleAddOption=(option)=>{
+    if(!option){
+      return 'Enter Task..'
     }
-  
+    else if (this.state.options.indexOf(option) > -1){
+        return 'Task Exists..'
+    }
+    this.setState((prevState) => ({
+        options: prevState.options.concat([option])
+    }));
+    console.log(option);
+  }
+
     componentDidMount() {
       try {
         const json = localStorage.getItem('options');
@@ -34,37 +60,7 @@ export default class NotesApp extends React.Component {
       }
     }
   
-    handleDeleteOptions() {
-      this.setState(() => ({
-          options: []
-      }));
-    }
-  
-    handleDeleteOption(optionToRemove) {
-      this.setState((prevState)=> ({
-          options : prevState.options.filter((option)=>{
-            return (optionToRemove !== option);
-          })
-      }))
-    }
-  
-    handlePick() {
-      const randomNum = Math.floor(Math.random() * this.state.options.length);
-      const option = this.state.options[randomNum];
-      alert(option);
-    }
-    handleAddOption(option){
-      if(!option){
-        return 'Enter Task..'
-      }
-      else if (this.state.options.indexOf(option) > -1){
-          return 'Task Exists..'
-      }
-      this.setState((prevState) => ({
-          options: prevState.options.concat([option])
-      }));
-      console.log(option);
-    }
+
     render() {
       const title = 'React Notes App';
       const subtitle = 'Random Task Assigner';
